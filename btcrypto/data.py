@@ -42,11 +42,3 @@ def get_pairings():
     """
     resp = requests.get("https://www.binance.com/api/v1/exchangeInfo").json()
     return [x['symbol'] for x in resp['symbols']]
-
-
-if __name__ == '__main__':
-    from btcrypto.utils import resample
-    df = get_data("BTCUSDT", "1d")
-    df_1 = resample(df, 'W', time_column='close_datetime')
-    df.to_csv("df.csv")
-    df_1.to_csv("df1.csv")
